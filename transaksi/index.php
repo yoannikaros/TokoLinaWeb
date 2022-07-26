@@ -141,7 +141,7 @@
 			text-transform: uppercase;
 		}
 
-		@media screen and (max-width: 400px) {
+		@media screen and (max-width: 20px) {
 			table {
 				border: 0;
 				
@@ -202,19 +202,24 @@
 	<body>
 	<nav class="navbar">
     <a class="navbar-brand" href="/index.php">Transaksi</a>
-    </nav>
-    <div class="profile"> 
+   
+</nav>
 <br>
+	<a href="../index.php"><input style="margin-left:10px" class="btn btn-primary"  value="Kembali ke menu!" ></a>
+    <div class="profile"> 
+
+	<br>
     <div class="demo-content">
 		
   <form name="frmSearch" method="post" action="">
 	 <p class="search_input">
-		<input type="text" placeholder="Dari Tanggal" style="margin-left:10px"  id="post_at" name="search[post_at]"  value="<?php echo $post_at; ?>" class="input-control" />
+		<input type="text" placeholder="Dari Tanggal" style="margin-left:10px"  id="post_at" name="search[post_at]"  value="<?php echo date('Y/m/d');?><?php echo $post_at; ?>" class="input-control" />
 		<br>
 		<br>
 	    <input  type="text" placeholder="Sampai Tanggal" id="post_at_to_date" name="search[post_at_to_date]" style="margin-left:10px"  value="<?php echo $post_at_to_date; ?>" class="input-control"  />			 
 		<br>
 		<br>
+		
 		<input style="margin-left:10px" class="btn btn-primary" type="submit" name="go" value="Cari Transaksi" >
 	</p>
 	

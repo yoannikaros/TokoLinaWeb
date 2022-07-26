@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<!-- Menyisipkan JQuery dan Javascript  -->
 	<script src="../source/js/bootstrap.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
@@ -32,6 +32,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 
 
@@ -54,7 +55,7 @@
 
 
 	//Main queries
-	$pages->default_ipp	=	5;
+	$pages->default_ipp	=	100;
 	$sql 	= $db->getRecFrmQry("SELECT * FROM barang WHERE 1 " . $condition . "");
 	$pages->items_total	=	count($sql);
 	$pages->mid_range	=	2;
@@ -100,7 +101,7 @@
 		table th,
 		table td {
 			padding: .625em;
-			text-align: right;
+			text-align: center;
 		}
 
 		table th {
@@ -109,7 +110,7 @@
 			text-transform: uppercase;
 		}
 
-		@media screen and (max-width: 8000px) {
+		@media screen and (max-width: 1029px) {
 			table {
 				border: 0;
 			}
@@ -178,7 +179,7 @@
 
 			<div class="card-header">
 
-				<a href="../index.php" class="float-left btn btn-dark btn-sm">Menu</a>
+				<a href="../index.php" class="float-left btn btn-dark btn-sm">Kembali ke Menu</a>
 
 				<a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Tambah</a>
 
@@ -325,10 +326,8 @@
 						<th>Satuan</th>
 						<th>Umum</th>
 						<th>Grosir</th>
-						<th></th>
-						<th></th>
-						<th></th>
-						<th></th>
+						<!-- <th>ISI PERDUS</th> -->
+					
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -347,10 +346,7 @@
 								<!-- <td data-label="Harga Umum "><?php echo $val['hargaumum']; ?></td> -->
 								<!-- <td data-label="Harga Grosir "><?php echo $val['hargagrosir']; ?></td> -->
 								<td data-label="Harga Grosir "><?php echo buatRupiah($val['hargagrosir']); ?></td>
-								<td data-label="Isi perdus "><?php echo $val['idsatuan']; ?></td>
-								<td data-label="Abaikan "><?php echo $val['barcode']; ?></td>
-								<td data-label="Abaikan "><?php echo $val['id']; ?></td>
-								<td data-label="Abaikan "><?php echo $val['qty']; ?></td>
+								<!-- <td data-label="Isi perdus "><?php echo $val['idsatuan']; ?></td> -->
 								<td align="center">
 									<a href="edit-users.php?editId=<?php echo $val['kode_item']; ?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Ubah Barang</a> |
 									<a href="delete.php?delId=<?php echo $val['kode_item']; ?>" class="text-danger" onClick="return confirm('beneran mau hapus barang ini ?');"><i class="fa fa-fw fa-trash"></i> Hapus Barang</a>

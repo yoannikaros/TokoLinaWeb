@@ -167,7 +167,7 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 		<div class="card">
 
-			<div class="card-header"><a href="index.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Lihat semua barang</a></div>
+			<div class="card-header"><a href="index.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Kembali</a></div>
 
 			<div class="card-body">
 

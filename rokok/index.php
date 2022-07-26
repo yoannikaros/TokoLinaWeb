@@ -14,7 +14,7 @@
 	<meta name="description" content="Address Book">
 	<meta name="keywords" content="Address Book">
 	<meta name="robots" content="index,follow">
-	<title>Toko Lina Rokok</title>
+	<title>Toko Lina barang</title>
 
 
 	<!-- Menyisipkan CSS -->
@@ -24,7 +24,7 @@
 	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<!-- Menyisipkan JQuery dan Javascript  -->
 	<script src="../source/js/bootstrap.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
@@ -32,6 +32,7 @@
 	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 
 
@@ -54,7 +55,7 @@
 
 
 	//Main queries
-	$pages->default_ipp	=	500;
+	$pages->default_ipp	=	5000;
 	$sql 	= $db->getRecFrmQry("SELECT * FROM barang WHERE 1 " . $condition . "");
 	$pages->items_total	=	count($sql);
 	$pages->mid_range	=	2;
@@ -100,7 +101,7 @@
 		table th,
 		table td {
 			padding: .625em;
-			text-align: left;
+			text-align: center;
 		}
 
 		table th {
@@ -180,7 +181,7 @@
 
 				<a href="../index.php" class="float-left btn btn-dark btn-sm">Menu</a>
 
-				<a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Tambah</a>
+		
 
 			</div>
 
@@ -236,8 +237,34 @@
 									<!-- <input type="text" name="jenis" id="jenis" class="form-control" value="<?php echo isset($_REQUEST['jenis']) ? $_REQUEST['jenis'] : '' ?>" placeholder="Satuan barang"> -->
 
 									<select class="form-select" name="jenis" id="jenis" value="<?php echo isset($_REQUEST['jenis']) ? $_REQUEST['jenis'] : '' ?>">
+										<option value=""></option>
+										<option value="PCS">PCS</option>
 										<option value="BKS">BKS</option>
 										<option value="Slop">Slop</option>
+										<option value="PAK">Pak</option>
+										<option value="/2 Pak">/2 Pak</option>
+										<option value="LEMBAR">LEMBAR</option>
+										<option value="RENCENG">RENCENG</option>
+										<option value="BUNGKUS">BUNGKUS</option>
+										<option value="IKET">IKET</option>
+										<option value="0.5">0.5</option>
+										<option value="1/4">1/4</option>
+										<option value="GLS">GLS</option>
+										<option value="/4">/4</option>
+										<option value="/2">/2</option>
+										<option value="KG">KG</option>
+										<option value="/2 KG">/2 KG</option>
+										<option value="1/2 RTG">1/2 RTG</option>
+										<option value="1 KG">1 KG</option>
+										<option value="1 ONS">1 ONS</option>
+										<option value="1/2 ONS">1/2 ONS</option>
+										<option value="1 GRAM">1 GRAM</option>
+										<option value="BOX">BOX</option>
+										<option value="DUS">DUS</option>
+										<option value="RTG">RTG</option>
+										<option value="KARUNG">KARUNG</option>
+										<option value="TIMBANGAN">TIMBANGAN</option>
+										<option value="Bal">Bal</option>
 										<option value="Slop">Slop</option>
 										<option value="SLOP">SLOP</option>
 									</select>
@@ -294,12 +321,13 @@
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr class="bg-primary text-white">
+					
+						<th>Barang</th>
+						<th>Satuan</th>
+										<th>Grosir</th>
 
-						<th>NAMA ROKOK</th>
-						<th>SLOP</th>
-						<th>GROSIR</th>
-						<th>UMUM</th>
-						
+					
+		
 					</tr>
 				</thead>
 				<tbody>
@@ -310,9 +338,12 @@
 							$s++;
 					?>
 							<tr>
-							
-								<td data-label="Nama barang"><br><?php echo $val['barang']; ?></td>
-								</tr>
+						
+								<td data-label="Nama barang"><?php echo $val['barang']; ?></td>
+								<td data-label="Satuan "><?php echo $val['jenis']; ?></td>
+								<td data-label="Harga Grosir "><?php echo buatRupiah($val['hargagrosir']); ?></td>
+			
+							</tr>
 						<?php
 						}
 					} else {

@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 	<!-- Menyisipkan JQuery dan Javascript  -->
 	<script src="../source/js/bootstrap.min.js"></script>
@@ -54,7 +55,7 @@
 
 
 	//Main queries
-	$pages->default_ipp	=	10;
+	$pages->default_ipp	=	50;
 	$sql 	= $db->getRecFrmQry("SELECT * FROM pengguna WHERE 1 " . $condition . "");
 	$pages->items_total	=	count($sql);
 	$pages->mid_range	=	2;
@@ -109,7 +110,7 @@
 			text-transform: uppercase;
 		}
 
-		@media screen and (max-width: 800px) {
+		@media screen and (max-width: 820px) {
 			table {
 				border: 0;
 			}
@@ -177,7 +178,7 @@
 
 			<div class="card-header">
 
-				<a href="../index.php" class="float-left btn btn-dark btn-sm">Menu</a>
+				<a href="../index.php" class="float-left btn btn-dark btn-sm">Kembali ke menu!</a>
 
 				<!-- <a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Tambah</a> -->
 
@@ -286,7 +287,7 @@ function buatRupiah($angka){
 				<thead>
 					<tr class="bg-primary text-white">
 						<th>Sr#</th>
-						<th>Nama Pelanggan</th>
+						<th>Pelanggan</th>
 						<th>Alamat</th>
 						<th>Hutang</th>
 						<th>Point</th>

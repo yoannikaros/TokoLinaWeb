@@ -114,6 +114,7 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 	<script src="../source/js/bootstrap.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -183,7 +184,7 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 		<div class="card">
 
 
-			<div class="card-header"><a href="index.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Lihat semua barang</a></div>
+			<div class="card-header"><a href="index.php" class="float-left btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Kembali</a></div>
 
 			<div class="card-body">
 
