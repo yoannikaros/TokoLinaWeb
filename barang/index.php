@@ -321,7 +321,7 @@
 			<table class="table table-striped table-bordered">
 				<thead>
 					<tr class="bg-primary text-white">
-						<th>Sr#</th>
+						<!-- <th>Sr#</th> -->
 						<th>Barang</th>
 						<th>Satuan</th>
 						<th>Umum</th>
@@ -339,7 +339,7 @@
 							$s++;
 					?>
 							<tr>
-								<td data-label="No"><?php echo $s; ?></td>
+								<!-- <td data-label="No"><?php echo $s; ?></td> -->
 								<td data-label="Nama barang"><?php echo $val['barang']; ?></td>
 								<td data-label="Satuan "><?php echo $val['jenis']; ?></td>
 								<td data-label="Harga Umum "><?php echo buatRupiah($val['hargaumum']); ?></td>
