@@ -2,7 +2,7 @@
 
 require_once('connection.php');
 
-$query = "SELECT * FROM barang ORDER BY id DESC";
+$query = "SELECT * FROM barang ORDER BY kode_item DESC";
 $sql = mysqli_query($db_connect,$query);
 
 if ($sql){
