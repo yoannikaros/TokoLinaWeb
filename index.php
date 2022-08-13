@@ -73,7 +73,7 @@
 </head>
 <body>
     <nav class="navbar">
-    <a class="navbar-brand" href="#">TOKO LINA SIGONG</a>
+    <a class="navbar-brand" href="barang/index.php">TOKO LINA SIGONG</a>
     </nav>
     <div class="profile"> 
     <a href="barang/index.php"><button style="margin-top: 100px;"> <b>Barang</b> </button></a>
