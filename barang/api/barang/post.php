@@ -1,5 +1,5 @@
 <?php
-require_once('connection.php');
+require_once('../connection.php');
 $barang =$_POST['barang'];
 $barcode =$_POST['barcode'];
 $idsatuan=$_POST['idsatuan'];

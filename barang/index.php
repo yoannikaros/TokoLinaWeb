@@ -348,8 +348,8 @@
 								<td data-label="Harga Grosir "><?php echo buatRupiah($val['hargagrosir']); ?></td>
 								<!-- <td data-label="Isi perdus "><?php echo $val['idsatuan']; ?></td> -->
 								<td align="center">
-									<a href="edit-users.php?editId=<?php echo $val['kode_item']; ?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Ubah Barang</a> |
-									<a href="delete.php?delId=<?php echo $val['kode_item']; ?>" class="text-danger" onClick="return confirm('beneran mau hapus barang ini ?');"><i class="fa fa-fw fa-trash"></i> Hapus Barang</a>
+									<a href="edit-users.php?editId=<?php echo $val['kode_item']; ?>" class="text-primary"><i class="fa fa-fw fa-edit"></i> Ubah</a> |
+									<a href="delete.php?delId=<?php echo $val['kode_item']; ?>" class="text-danger" onClick="return confirm('beneran mau hapus barang ini ?');"><i class="fa fa-fw fa-trash"></i> Hapus</a>
 								</td>
 
 							</tr>
