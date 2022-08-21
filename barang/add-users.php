@@ -241,11 +241,6 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 								<option value="SLOP">SLOP</option>
 							</select>
 
-
-
-
-
-
 						</div>
 
 						<div class="form-group">

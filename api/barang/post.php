@@ -16,6 +16,6 @@ if ($sql){
    
     echo json_encode (array('message'=> 'BERHASIL DIBUAT!'));
 } else {
-    echo json_encode (array('message'=> 'gagal!'));
+    echo json_encode (array('message'=> 'GAGAL!'));
 }
 ?>
