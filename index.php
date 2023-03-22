@@ -76,7 +76,7 @@
     <a class="navbar-brand" href="barang/index.php">TOKO LINA SIGONG</a>
     </nav>
     <div class="profile"> 
-    <a href="barang/index.php"><button style="margin-top: 100px;"> <b>Barang</b> </button></a>
+    <a href="barang2"><button style="margin-top: 100px;"> <b>Barang</b> </button></a>
         <a href="pelanggan/index.php"><button > <b>Pelanggan</b> </button></a>
         <a href="transaksi/index.php"><button > <b>Transaksi</b> </button> </a>
 

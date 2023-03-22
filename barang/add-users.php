@@ -108,35 +108,20 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 	<link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+	<link rel="stylesheet" href="../source/v5/dist/css/bootstrap.min.css" crossorigin="anonymous">
 
 	<!-- Menyisipkan JQuery dan Javascript  -->
 	<script src="../source/js/bootstrap.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.js"></script>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-
-
-	<link rel="shortcut icon" href="https://demo.learncodeweb.com/favicon.ico">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
-	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-
 
 
 </head>
 
 
 
-<body>
+<body class="bg-secondary">
 
 	<style>
 		.header {
@@ -150,12 +135,10 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 		}
 	</style>
 
-	<div class="header">
-		<h3>Tambah Barang Baru</h3>
-	</div>
+	<?php include "../source/navbar/index.php"; ?>
 
 
-	<div class="container">
+	<div class="container mt-4">
 
 		<?php
 
@@ -184,7 +167,10 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 		<div class="card">
 
 
-			<div class="card-header"><a href="index.php" class="float-left btn btn-dark btn-sm"><i class="fa fa-fw fa-globe"></i> Kembali</a></div>
+			<div class="card-header">
+				<button type="button" class="btn btn-warning float-left mr-2" onclick="window.close();">Kembali</button>
+				<h4 class="float-left">Tambah Barang</h4>
+			</div>
 
 			<div class="card-body">
 
@@ -197,7 +183,15 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 						<div class="form-group">
 
-							<label>Nama Barang <span class="text-danger">*</span></label>
+							<label>Barcode <span class="text-danger">*</span></label>
+
+							<input type="text" name="barcode" id="barcode" class="form-control" placeholder="Masukan barcode" value="0" required>
+
+						</div>
+
+						<div class="form-group">
+
+							<b><label>NAMA BARANG <span class="text-danger">*</span></label></b>
 
 							<input type="text" name="barang" id="barang" class="form-control" placeholder="Masukan nama barang" required>
 
@@ -205,57 +199,85 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 						<div class="form-group">
 
-							<label>Satuan Barang <span class="text-danger">*</span></label>
+							<b><label>SATUAN <span class="text-danger">*</span></label></b>
 
 							<!-- <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Masukan Satuan" required> -->
 
 							<select class="form-select" name="jenis" id="jenis">
 								<option value="PCS">PCS</option>
 								<option value="BKS">BKS</option>
-								<option value="Slop">Slop</option>
-								<option value="PAK">Pak</option>
-								<option value="/2 Pak">/2 Pak</option>
-								<option value="LEMBAR">LEMBAR</option>
+								<option value="1/2 BKS">1/2 BKS</option>
+								<option value="SLOP">SLOP</option>
+
 								<option value="RENCENG">RENCENG</option>
-								<option value="BUNGKUS">BUNGKUS</option>
-								<option value="IKET">IKET</option>
-								<option value="0.5">0.5</option>
-								<option value="1/4">1/4</option>
-								<option value="GLS">GLS</option>
-								<option value="/4">/4</option>
-								<option value="/2">/2</option>
+								<option value="RTG">RTG</option>
+								<option value="1/2 RTG">1/2 RTG</option>
+
 								<option value="KG">KG</option>
 								<option value="/2 KG">/2 KG</option>
-								<option value="1/2 RTG">1/2 RTG</option>
-								<option value="1 KG">1 KG</option>
+								<option value="0.5">Setengah KG</option>
+
+								<option value="GLS">GLS</option>
+								<option value="IKET">IKET</option>
+
+								<option value="1/4">1/4</option>
+								<option value="/2">1/2</option>
+
+								<option value="LUSIN">LUSIN</option>
+								<option value="1/2 LUSIN">1/2 LUSIN</option>
+
+								<option value="LEMBAR">LEMBAR</option>
+
 								<option value="1 ONS">1 ONS</option>
 								<option value="1/2 ONS">1/2 ONS</option>
+
 								<option value="1 GRAM">1 GRAM</option>
+								<option value="1/2 GRAM">1/2 GRAM</option>
+
+								<option value="PAK">Pak</option>
+								<option value="/2 Pak">/2 Pak</option>
+
+								<option value="1 Roll">1 Roll</option>
+								<option value="1/2 Roll">1/2 Roll</option>
+
+								<option value="1 Gross">1 Gross</option>
+								<option value="1/2 Gross">1/2 Gross</option>
+
 								<option value="BOX">BOX</option>
 								<option value="DUS">DUS</option>
-								<option value="RTG">RTG</option>
-								<option value="KARUNG">KARUNG</option>
-								<option value="TIMBANGAN">TIMBANGAN</option>
+								<option value="1/2 DUS">1/2 DUS</option>
+
 								<option value="Bal">Bal</option>
-								<option value="Slop">Slop</option>
-								<option value="SLOP">SLOP</option>
+								<option value="1/2 Bal">1/2 Bal</option>
+
+								<option value="KARUNG">KARUNG</option>
+								<option value="1/2 KARUNG">1/2 KARUNG</option>
+
+								<option value="Boss">Boss</option>
+								<option value="1/2 Boss">1/2 Boss</option>
+
+								<option value="1 PETI">1 PETI</option>
+								<option value="1/2 PETI">1/2 PETI</option>
+
+								<option value="GULUNG">GULUNG</option>
+								<option value="TIMBANGAN">TIMBANGAN</option>
 							</select>
 
 						</div>
 
 						<div class="form-group">
 
-							<label>Harga Umum <span class="text-danger">*</span></label>
+							<b><label>HARGA UMUM <span class="text-danger">*</span></label></b>
 
-							<input type="text" name="hargaumum" id="hargaumum" class="form-control" placeholder="Masukan harga umum" required>
+							<input type="number" name="hargaumum" id="hargaumum" class="form-control" placeholder="Masukan harga umum" required>
 
 						</div>
 
 						<div class="form-group">
 
-							<label>Harga Grosir <span class="text-danger">*</span></label>
+							<b><label>HARGA GROSIR <span class="text-danger">*</span></label></b>
 
-							<input type="text" name="hargagrosir" id="hargagrosir" class="form-control" placeholder="Masukan harga grosir" required>
+							<input type="number" name="hargagrosir" id="hargagrosir" class="form-control" placeholder="Masukan harga grosir" required>
 
 						</div>
 
@@ -272,30 +294,22 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 							<label>Abaikan <span class="text-danger">*</span></label>
 
-							<input readonly type="text" name="barcode" id="barcode" class="form-control" placeholder="Masukan barcode" value="9999" required>
-
-						</div>
-
-
-						<div class="form-group">
-
-							<label>Abaikan <span class="text-danger">*</span></label>
-
 							<input readonly type="text" name="id" id="id" class="form-control" placeholder="Masukan id" value="2" required>
 
 						</div>
 
 						<div class="form-group">
 
-							<label>Abaikan <span class="text-danger">*</span></label>
+							<label>Stok <span class="text-danger">*</span></label>
 
-							<input readonly type="text" name="qty" id="qty" class="form-control" placeholder="Masukan qty" value="9999" required>
+							<input type="text" name="qty" id="qty" class="form-control" placeholder="Masukan qty" value="9999" required>
 
 						</div>
 
 						<div class="form-group">
 
 							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Tambah Barang</button>
+							<button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
 
 						</div>
 
@@ -330,7 +344,20 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 			text-align: center;
 		}
 	</style>
+	<script>
+		document.getElementById('myForm').addEventListener('submit', function(event) {
+			event.preventDefault(); // prevent form from being submitted
 
+			// get value of input with ID "name"
+			var USERNAME = document.getElementById('USERNAME').value;
+
+			// set action of form to "google.com/name"
+			this.action = "../barang/?barang=" + USERNAME;
+
+			// submit form
+			this.submit();
+		});
+	</script>
 
 </body>
 

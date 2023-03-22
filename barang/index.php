@@ -23,16 +23,11 @@
 	<link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+	<link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 	<!-- Menyisipkan JQuery dan Javascript  -->
 	<script src="../source/js/bootstrap.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
 	<script rel="stylesheet" src="../source/fontawesome/js/all.js"></script>
-	<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-	<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
 
 
 
@@ -167,45 +162,48 @@
 		}
 	</style>
 
-	<div class="header">
-		<h3>Manajemen barang</h3>
-	</div>
+<?php include "../source/navbar/index.php"; ?>
 
-	<div class="container">
-
+	<div class="container mt-4">
 
 
 		<div class="card">
 
-			<div class="card-header">
 
-				<a href="../index.php" class="float-left btn btn-dark btn-sm">Kembali ke Menu</a>
 
-				<a href="add-users.php" class="float-right btn btn-dark btn-sm"><i class="fa fa-fw fa-plus-circle"></i> Tambah</a>
-
-			</div>
-
-			<div class="card-body">
+			<div class="card-body mt-2">
 
 				<?php
 
 				if (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rds") {
 
 					echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i>  Barang berhasil di hapus !</div>';
+					echo "<script>setTimeout(function(){
+						window.close();
+					 }, 2000);</script>";
 				} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rus") {
-
 					echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Barang berhasil di ubah!</div>';
+					
+					echo "<script>setTimeout(function(){
+						window.close();
+					 }, 1000);</script>";
+
 				} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rnu") {
 
 					echo	'<div class="alert alert-warning"><i class="fa fa-exclamation-triangle"></i> You did not change any thing!</div>';
 				} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "ras") {
+					
+					echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Produk berhasil DITAMBAH!</div>';
+					echo "<script>setTimeout(function(){
+						window.close();
+					 }, 2000);</script>";
 
-					echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Record added successfully!</div>';
 				} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rna") {
 
 					echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Record not added <strong>Please try again!</strong></div>';
 				}
 
+				
 				?>
 
 				<div class="col-sm-12">
@@ -327,7 +325,7 @@
 						<th>Umum</th>
 						<th>Grosir</th>
 						<!-- <th>ISI PERDUS</th> -->
-					
+
 						<th class="text-center">Action</th>
 					</tr>
 				</thead>
@@ -409,26 +407,17 @@
 		}
 	</style>
 
-
+<script>
+		document.getElementById("tambah-button").onclick = function() {
+			window.open("../barang/add-users.php", "_blank");
+		};
+	</script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
-	<!-- 	<script src="https://cdn.jsdelivr.net/jquery.caret/0.1/jquery.caret.js"></script>
-	<script src="https://www.solodev.com/_/assets/phone/jquery.mobilePhoneNumber.js"></script>
-	<script>
-		$(document).ready(function() {
-		jQuery(function($){
-			  var input = $('[type=tel]')
-			  input.mobilePhoneNumber({allowPhoneWithoutPrefix: '+1'});
-			  input.bind('country.mobilePhoneNumber', function(e, country) {
-				$('.country').text(country || '')
-			  })
-			 });
-		});
-	</script>
-     -->
+
 
 </body>
 
