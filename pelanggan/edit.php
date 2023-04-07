@@ -1,28 +1,31 @@
-
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <!-- Menyisipkan CSS -->
-	<link rel="stylesheet" href="../source/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../source/css/bootstrap.css" />
-	<link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-	 <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../source/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../source/css/bootstrap.css" />
+    <link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../source/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 
     <title>BAYAR HUTANG</title>
 </head>
+
 <body class="bg-secondary">
-<?php include "../source/navbar/index.php"; ?>
+    <?php include "../source/navbar/index.php"; ?>
     <div class="container mt-3">
         <div class="card p-3">
             <div class="form-group">
 
-<?php
+                <?php
 session_start();
 $servername = "localhost";
 $username = "root";
@@ -88,29 +91,32 @@ if(isset($_POST['submit'])){
 
 ?>
 
-<form action="" method="post">
+                <form action="" method="post">
 
-    <label for="nama_pelanggan">Nama Pelanggan:</label>
-    <input class="form-control" readonly type="text" name="nama_pelanggan" value="<?php if(isset($nama_pelanggan)) echo $nama_pelanggan; ?>"">
+                    <label for="nama_pelanggan">Nama Pelanggan:</label>
+                    <input class="form-control" readonly type="text" name="nama_pelanggan"
+                        value="<?php if(isset($nama_pelanggan)) echo $nama_pelanggan; ?>"">
 <br>
-<label for="hutang_sebelumnya">Hutang Sebelumnya:</label>
-<input class="form-control" type="text" name="hutang_sebelumnya" value="<?php if(isset($hutang)) echo $hutang; ?>" disabled>
-<br>
-<label for="hutang_baru">Hutang dibayarkan:</label>
-<input class="form-control" type="number" name="hutang_baru" required value="">
-<br>
-<input type="submit" class="btn btn-success" name="submit" value="Bayarkan">
-<button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
-</form>
+<label for=" hutang_sebelumnya">Hutang Sebelumnya:</label>
+                    <input class="form-control" type="text" name="hutang_sebelumnya"
+                        value="<?php if(isset($hutang)) echo $hutang; ?>" disabled>
+                    <br>
+                    <label for="hutang_baru">Hutang dibayarkan:</label>
+                    <input class="form-control" type="number" name="hutang_baru" required value="">
+                    <br>
+                    <input type="submit" class="btn btn-success" name="submit" value="Bayarkan">
+                    <button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
+                </form>
 
             </div>
         </div>
-    </div>  
+    </div>
 
     <script>
-		document.getElementById("tambah-button").onclick = function() {
-			window.open("../pelanggan/add.php", "_blank");
-		};
-	</script>
+    document.getElementById("tambah-button").onclick = function() {
+        window.open("../pelanggan/add.php", "_blank");
+    };
+    </script>
 </body>
+
 </html>

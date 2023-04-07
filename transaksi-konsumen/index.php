@@ -163,7 +163,7 @@
 		}
 	</style>
 
-<?php include "../source/navbar/index.php"; ?>
+	<?php include "../source/navbar/index.php"; ?>
 
 	<div class="container mt-4">
 
@@ -232,7 +232,8 @@
 
 									<div>
 
-										<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i> Cari Pelanggan</button>
+										<button type="submit" name="submit" value="search" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-search"></i> Cari
+											Pelanggan</button>
 										<button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
 										<!-- <a href="<?php echo $_SERVER['PHP_SELF']; ?>" class="btn btn-danger"><i class="fa fa-fw fa-sync"></i> Clear</a> -->
 
@@ -276,7 +277,7 @@
 						<th>date</th>
 						<th>subtotal</th>
 						<th>tunai</th>
-					
+
 						<th>total hutang</th>
 						<th>Action</th>
 					</tr>
@@ -294,8 +295,8 @@
 								<td data-label="date "><?php echo $val['date']; ?></td>
 								<td data-label="subtotal "><?php echo buatRupiah($val['subtotal']); ?></td>
 								<td data-label="bayar "><?php echo buatRupiah($val['bayar']); ?></td>
-							
-								<td data-label="totalhutang "><?php echo buatRupiah($val['totalhutang']); ?></td>
+
+								<td data-label="totalhutang "><?php echo buatRupiah($val['balance']); ?></td>
 								<td>
 									<a target='_blank' href='../transaksi-konsumen/barang.php?tanggal=<?php echo $val['date']; ?>&pelanggan=<?php echo $val['nama_pelanggan']; ?>' class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
 									<?php
@@ -312,7 +313,8 @@
 					} else {
 						?>
 						<tr>
-							<td colspan="5" align="center">Konsumen ngga ada! mungkin belum transaksi atau merubah nama sebelumnya</td>
+							<td colspan="5" align="center">Konsumen ngga ada! mungkin belum transaksi atau merubah nama
+								sebelumnya</td>
 						</tr>
 					<?php } ?>
 				</tbody>
@@ -361,9 +363,11 @@
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous">
+	</script>
 
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous">
+	</script>
 
 
 </body>

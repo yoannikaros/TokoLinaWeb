@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
     <link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Menyisipkan JQuery dan Javascript  -->
     <script src="../source/js/bootstrap.min.js"></script>
     <script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
@@ -23,7 +25,7 @@
 </head>
 
 <body class="bg-secondary">
-<?php include "../source/navbar/index.php"; ?>
+    <?php include "../source/navbar/index.php"; ?>
     <?php
     // Koneksi ke database
     $connection = mysqli_connect("localhost", "root", "", "akrab_main");
@@ -50,20 +52,23 @@
     ?>
     <div class="container mt-3">
         <div class="card p-3">
-        <div class="btn-group mb-3" role="group">
+            <div class="btn-group mb-3" role="group">
 
-            <a href="../transaksi/ringkas.php"><button class='btn btn-dark mb-3 mr-3'>Ringkas</button></a> 
-            <a href="../transaksi/range.php"><button class='btn btn-dark mb-3 mr-2'>Rentang waktu</button></a> 
-            <a href="../transaksi/data_pertransaksi.php"><button class='btn btn-warning mb-3 mr-2'>Data Kunjungan</button></a> 
-            <a href="../transaksi/data_struk.php"><button class='btn btn-warning mb-3 mr-2'>Jumlah Barang keluar</button></a>
-            <a href="../transaksi/data_barang.php"><button class='btn btn-warning mb-3 mr-2'>Data Barang keluar</button></a>
-        </div>
-        <p>Menjumlahkan subtotal berdasarkan tanggal dan nama konsumen</p>
-                    <table class='table'>
+                <a href="../transaksi/waktu.php"><button class='btn btn-dark mb-3 mr-3'>Ringkas</button></a>
+                <a href="../transaksi/range.php"><button class='btn btn-dark mb-3 mr-2'>Rentang waktu</button></a>
+                <a href="../transaksi/data_pertransaksi.php"><button class='btn btn-warning mb-3 mr-2'>Data
+                        Kunjungan</button></a>
+                <a href="../transaksi/data_struk.php"><button class='btn btn-warning mb-3 mr-2'>Jumlah Barang
+                        keluar</button></a>
+                <a href="../transaksi/data_barang.php"><button class='btn btn-warning mb-3 mr-2'>Data Barang
+                        keluar</button></a>
+            </div>
+            <p>Menjumlahkan subtotal berdasarkan tanggal dan nama konsumen</p>
+            <table class='table'>
 
                 <thead class='thead-dark'>
                     <tr>
-                    <th>Nama</th>
+                        <th>Nama</th>
                         <th>Tanggal</th>
                         <th>Total Subtotal</th>
                         <th>Action</th>
@@ -79,15 +84,17 @@
                     $total_hutang += $data['total_subtotal'];
                        
                     ?>
-                    
-                        <tr>
+
+                    <tr>
                         <td data-label="nama_pengguna"><?php echo $data['nama_pelanggan']; ?></td>
-                            <td data-label="Tanggal"><?php echo $data['date']; ?></td>
-                            <td data-label="Total Subtotal"><?php echo buatRupiah($data['total_subtotal']); ?></td>
-                            <td> <a target='_blank' href='../transaksi-konsumen/barang.php?tanggal=<?php echo $data['date']; ?>&pengguna=<?php echo $data['nama_pelanggan']; ?>' class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
-                            </td>
-                            
-                        </tr>
+                        <td data-label="Tanggal"><?php echo $data['date']; ?></td>
+                        <td data-label="Total Subtotal"><?php echo buatRupiah($data['total_subtotal']); ?></td>
+                        <td> <a target='_blank'
+                                href='../transaksi-konsumen/barang.php?tanggal=<?php echo $data['date']; ?>&pengguna=<?php echo $data['nama_pelanggan']; ?>'
+                                class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
+                        </td>
+
+                    </tr>
                     <?php } ?>
                     <td data-label="Total Subtotal">Total : <?php echo buatRupiah($total_hutang); ?></td>
 

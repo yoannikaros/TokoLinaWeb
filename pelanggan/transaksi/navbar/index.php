@@ -8,15 +8,15 @@
         <ul class="navbar-nav mr-auto">
 
             <li class="nav-item">
-                <a class="nav-link" href="../barang2">Barang</a>
+                <a class="nav-link" href="../../barang2">Barang</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="/toko/pelanggan">Pelanggan</a>
+                <a class="nav-link" href="../index.php">Pelanggan</a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="../transaksi/waktu.php">Laporan</a>
+                <a class="nav-link" href="../../transaksi/waktu.php">Laporan</a>
             </li>
 
 
