@@ -51,7 +51,7 @@
 			die("Connection failed: " . $conn->connect_error);
 		}
 
-		$sql = "SELECT barang, jenis ,hargagrosir, hargaumum, kode_item FROM barang ORDER BY barang ASC LIMIT 100";
+		$sql = "SELECT barang, jenis,qty ,hargagrosir, hargaumum, kode_item FROM barang ORDER BY barang ASC LIMIT 100";
 		$result = $conn->query($sql);
 
 		if ($result->num_rows > 0) {
@@ -64,6 +64,7 @@
 			<th>SATUAN</th>
 			<th>HARGA GROSIR</th>
 			<th>HARGA UMUM</th>
+			<th>STOK</th>
 			<th>ACTION</th>
 			</tr>
 			
@@ -81,7 +82,7 @@
                     <td style='text-transform: uppercase;'>" . $row["jenis"] . "</td>
                     <td>$hargagrosir</td>
 					<td>$hargaumum</td>
-                
+					<td style='text-transform: uppercase;'>" . $row["qty"] . "</td>
                     <td>
 					<a href='../barang/edit-users.php?editId=$row[kode_item]' target='_blank' class='btn btn-primary'> Ubah </a> 
 					<a href='../barang/delete.php?delId=$row[kode_item]' onClick='return confirm(\"beneran mau hapus barang ini mah ?\");' target='_blank' class='btn btn-danger'> Hapus </a>

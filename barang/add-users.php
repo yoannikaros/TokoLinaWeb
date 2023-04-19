@@ -2,89 +2,118 @@
 
 if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
-	extract($_REQUEST);
-
-	if ($barang == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=un');
-
-		exit;
-	} elseif ($jenis == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} elseif ($hargaumum == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=up');
-
-		exit;
-	} elseif ($hargagrosir == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} elseif ($barcode == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} elseif ($idsatuan == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} elseif ($id == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} elseif ($qty == "") {
-
-		header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
-
-		exit;
-	} else {
+    // $barang = $_POST['barang'];
+    // $barang_lima_karakter = substr($barang, 0, 6);
 
 
+    // // Menghitung Stok
+    // $idsatuan = $_POST['idsatuan']; //is perdus
+    // $qty = $_POST['qty']; // QTY
 
-		$userCount	=	$db->getQueryCount('barang', 'kode_item');
+    // $stok = $idsatuan * $qty;
 
-		if ($userCount[0]['total'] < 100000) {
+    // // Menghitung modal
+    // $harga_modal = $_POST['harga_modal'];
+    // $modal_clear = $harga_modal / $idsatuan;
 
-			$data	=	array(
 
-				'barang' => $barang,
-				'jenis' => $jenis,
-				'hargaumum' => $hargaumum,
-				'hargagrosir' => $hargagrosir,
-				'barcode' => $barcode,
-				'idsatuan' => $idsatuan,
-				'id' => $id,
-				'qty' => $qty,
+    extract($_REQUEST);
 
-			);
+    if ($barang == "") {
 
-			$insert	=	$db->insert('barang', $data);
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=un');
 
-			if ($insert) {
+        exit;
+    } elseif ($jenis == "") {
 
-				header('location:index.php?msg=ras');
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
 
-				exit;
-			} else {
+        exit;
+    } elseif ($hargaumum == "") {
 
-				header('location:index.php?msg=rna');
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=up');
 
-				exit;
-			}
-		} else {
+        exit;
+    } elseif ($hargagrosir == "") {
 
-			header('location:' . $_SERVER['PHP_SELF'] . '?msg=dsd');
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
 
-			exit;
-		}
-	}
+        exit;
+    } elseif ($barcode == "") {
+
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
+
+        exit;
+    } elseif ($idsatuan == "") {
+
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
+
+        exit;
+    } elseif ($id == "") {
+
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
+
+        exit;
+    } elseif ($qty == "") {
+
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
+
+        exit;
+    } elseif ($harga_modal == "") {
+
+        header('location:' . $_SERVER['PHP_SELF'] . '?msg=ue');
+
+        exit;
+    } else {
+
+
+
+        $userCount    =    $db->getQueryCount('barang', 'kode_item');
+
+        if ($userCount[0]['total'] < 100000) {
+
+            $data    =    array(
+
+                'barang' => $barang,
+                'jenis' => $jenis,
+                'hargaumum' => $hargaumum,
+                'hargagrosir' => $hargagrosir,
+                'barcode' => $barcode,
+                'idsatuan' => $idsatuan,
+                'id' => $id,
+                'qty' => $qty,
+                'harga_modal' => $harga_modal
+
+            );
+
+            $insert    =    $db->insert('barang', $data);
+
+            if ($insert) {
+
+                // if ($_POST['jenis'] === "DUS") {
+                //     header("location: ../barang2/name-for-stok.php?barang=$barang_lima_karakter&qty=$stok&modal=$modal_clear");
+
+                //     exit;
+                // } else {
+                //     header('location: index.php?msg=ras');
+                //     exit;
+                // }
+                header('location:index.php?msg=ras');
+
+                exit;
+            } else {
+
+                header('location:index.php?msg=rna');
+
+                exit;
+            }
+        } else {
+
+            header('location:' . $_SERVER['PHP_SELF'] . '?msg=dsd');
+
+            exit;
+        }
+    }
 }
 
 ?>
@@ -94,27 +123,27 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 <head>
 
-	<meta charset="UTF-8">
+    <meta charset="UTF-8">
 
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<meta name="description" content="Address Book">
-	<meta name="keywords" content="toko lina">
-	<meta name="robots" content="index,follow">
-	<title>Tambah Barang</title>
-	<!-- Menyisipkan CSS -->
-	<link rel="stylesheet" href="../source/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="../source/css/bootstrap.css" />
-	<link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
-	<link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
-	<link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-	<link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-	<link rel="stylesheet" href="../source/v5/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <meta name="description" content="Address Book">
+    <meta name="keywords" content="toko lina">
+    <meta name="robots" content="index,follow">
+    <title>Tambah Barang</title>
+    <!-- Menyisipkan CSS -->
+    <link rel="stylesheet" href="../source/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../source/css/bootstrap.css" />
+    <link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
+    <link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../source/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="../source/v5/dist/css/bootstrap.min.css" crossorigin="anonymous">
 
-	<!-- Menyisipkan JQuery dan Javascript  -->
-	<script src="../source/js/bootstrap.min.js"></script>
-	<script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
-	<script rel="stylesheet" src="../source/fontawesome/js/all.js"></script>
+    <!-- Menyisipkan JQuery dan Javascript  -->
+    <script src="../source/js/bootstrap.min.js"></script>
+    <script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
+    <script rel="stylesheet" src="../source/fontawesome/js/all.js"></script>
 
 
 </head>
@@ -123,241 +152,261 @@ if (isset($_REQUEST['submit']) and $_REQUEST['submit'] != "") {
 
 <body class="bg-secondary">
 
-	<style>
-		.header {
-			position: relative;
-			left: 0;
-			Top: 0;
-			width: 100%;
-			background-color: Black;
-			color: white;
-			text-align: center;
-		}
-	</style>
+    <style>
+        .header {
+            position: relative;
+            left: 0;
+            Top: 0;
+            width: 100%;
+            background-color: Black;
+            color: white;
+            text-align: center;
+        }
+    </style>
 
-	<?php include "../source/navbar/index.php"; ?>
+    <?php include "../source/navbar/index.php"; ?>
 
 
-	<div class="container mt-4">
+    <div class="container mt-4">
 
-		<?php
+        <?php
 
-		if (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "un") {
+        if (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "un") {
 
-			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User name is mandatory field!</div>';
-		} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "ue") {
+            echo    '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User name is mandatory field!</div>';
+        } elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "ue") {
 
-			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User email is mandatory field!</div>';
-		} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "up") {
+            echo    '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User email is mandatory field!</div>';
+        } elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "up") {
 
-			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User phone is mandatory field!</div>';
-		} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "ras") {
+            echo    '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> User phone is mandatory field!</div>';
+        } elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "ras") {
 
-			echo	'<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Record added successfully!</div>';
-		} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rna") {
+            echo    '<div class="alert alert-success"><i class="fa fa-thumbs-up"></i> Record added successfully!</div>';
+        } elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "rna") {
 
-			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Record not added <strong>Please try again!</strong></div>';
-		} elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "dsd") {
+            echo    '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Record not added <strong>Please try again!</strong></div>';
+        } elseif (isset($_REQUEST['msg']) and $_REQUEST['msg'] == "dsd") {
 
-			echo	'<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Please delete a user and then try again <strong>We set limit for security reasons!</strong></div>';
-		}
+            echo    '<div class="alert alert-danger"><i class="fa fa-exclamation-triangle"></i> Please delete a user and then try again <strong>We set limit for security reasons!</strong></div>';
+        }
 
-		?>
+        ?>
 
-		<div class="card">
+        <div class="card">
 
 
-			<div class="card-header">
-				<button type="button" class="btn btn-warning float-left mr-2" onclick="window.close();">Kembali</button>
-				<h4 class="float-left">Tambah Barang</h4>
-			</div>
+            <div class="card-header">
+                <button type="button" class="btn btn-warning float-left mr-2" onclick="window.close();">Kembali</button>
+                <h4 class="float-left">Tambah Barang</h4>
+            </div>
 
-			<div class="card-body">
+            <div class="card-body">
 
+                <?php
+                $random_number = rand(100, 999); // menghasilkan angka acak antara 100 dan 999
+                $date = date("Ymd"); // menghasilkan tanggal sekarang dalam format tahun-bulan-tanggal
 
+                // menggabungkan angka acak dan tanggal untuk membentuk nilai yang unik
+                $value = $date . "" . $random_number;
+                ?>
 
-				<div class="col-sm-60">
 
 
-					<form method="post">
+                <div class="col-sm-60">
 
-						<div class="form-group">
 
-							<label>Barcode <span class="text-danger">*</span></label>
+                    <form method="post">
 
-							<input type="text" name="barcode" id="barcode" class="form-control" placeholder="Masukan barcode" value="0" required>
+                        <div class="form-group">
 
-						</div>
+                            <label>Barcode <span class="text-danger">*</span></label>
 
-						<div class="form-group">
+                            <input type="number" name="barcode" id="barcode" class="form-control" placeholder="Masukan barcode" value="<?php echo $value; ?>" required>
 
-							<b><label>NAMA BARANG <span class="text-danger">*</span></label></b>
+                        </div>
 
-							<input type="text" name="barang" id="barang" class="form-control" placeholder="Masukan nama barang" required>
+                        <div class="form-group">
 
-						</div>
+                            <b><label>NAMA BARANG <span class="text-danger">*</span></label></b>
 
-						<div class="form-group">
+                            <input type="text" name="barang" id="barang" class="form-control" placeholder="Masukan nama barang" required>
 
-							<b><label>SATUAN <span class="text-danger">*</span></label></b>
+                        </div>
+                        <div class="form-group">
 
-							<!-- <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Masukan Satuan" required> -->
+                            <label>Stok <span class="text-danger">*</span></label>
 
-							<select class="form-select" name="jenis" id="jenis">
-								<option value="PCS">PCS</option>
-								<option value="BKS">BKS</option>
-								<option value="1/2 BKS">1/2 BKS</option>
-								<option value="SLOP">SLOP</option>
+                            <input type="number" name="qty" id="qty" class="form-control" placeholder="Masukan qty" value="1" required>
+                            <label>sudah mulai berlaku</label>
+                        </div>
+                        <div class="form-group">
 
-								<option value="RENCENG">RENCENG</option>
-								<option value="RTG">RTG</option>
-								<option value="1/2 RTG">1/2 RTG</option>
+                            <label>Isi Perdus <span class="text-danger">*</span></label>
 
-								<option value="KG">KG</option>
-								<option value="/2 KG">/2 KG</option>
-								<option value="0.5">Setengah KG</option>
+                            <input type="number" name="idsatuan" id="idsatuan" class="form-control" placeholder="Masukan idsatuan" value="1" required>
 
-								<option value="GLS">GLS</option>
-								<option value="IKET">IKET</option>
+                        </div>
 
-								<option value="1/4">1/4</option>
-								<option value="/2">1/2</option>
 
-								<option value="LUSIN">LUSIN</option>
-								<option value="1/2 LUSIN">1/2 LUSIN</option>
 
-								<option value="LEMBAR">LEMBAR</option>
 
-								<option value="1 ONS">1 ONS</option>
-								<option value="1/2 ONS">1/2 ONS</option>
+                        <div class="form-group">
 
-								<option value="1 GRAM">1 GRAM</option>
-								<option value="1/2 GRAM">1/2 GRAM</option>
+                            <b><label>SATUAN <span class="text-danger">*</span></label></b>
 
-								<option value="PAK">Pak</option>
-								<option value="/2 Pak">/2 Pak</option>
+                            <!-- <input type="text" name="jenis" id="jenis" class="form-control" placeholder="Masukan Satuan" required> -->
 
-								<option value="1 Roll">1 Roll</option>
-								<option value="1/2 Roll">1/2 Roll</option>
+                            <select class="form-select" name="jenis" id="jenis">
+                                <option value="PCS">PCS</option>
+                                <option value="DUS">DUS</option>
+                                <option value="BKS">BKS</option>
+                                <option value="1/2 BKS">1/2 BKS</option>
+                                <option value="SLOP">SLOP</option>
 
-								<option value="1 Gross">1 Gross</option>
-								<option value="1/2 Gross">1/2 Gross</option>
+                                <option value="RENCENG">RENCENG</option>
+                                <option value="RTG">RTG</option>
+                                <option value="1/2 RTG">1/2 RTG</option>
 
-								<option value="BOX">BOX</option>
-								<option value="DUS">DUS</option>
-								<option value="1/2 DUS">1/2 DUS</option>
+                                <option value="KG">KG</option>
+                                <option value="/2 KG">/2 KG</option>
+                                <option value="0.5">Setengah KG</option>
 
-								<option value="Bal">Bal</option>
-								<option value="1/2 Bal">1/2 Bal</option>
+                                <option value="GLS">GLS</option>
+                                <option value="IKET">IKET</option>
 
-								<option value="KARUNG">KARUNG</option>
-								<option value="1/2 KARUNG">1/2 KARUNG</option>
+                                <option value="1/4">1/4</option>
+                                <option value="/2">1/2</option>
 
-								<option value="Boss">Boss</option>
-								<option value="1/2 Boss">1/2 Boss</option>
+                                <option value="LUSIN">LUSIN</option>
+                                <option value="1/2 LUSIN">1/2 LUSIN</option>
 
-								<option value="1 PETI">1 PETI</option>
-								<option value="1/2 PETI">1/2 PETI</option>
+                                <option value="LEMBAR">LEMBAR</option>
 
-								<option value="GULUNG">GULUNG</option>
-								<option value="TIMBANGAN">TIMBANGAN</option>
-							</select>
+                                <option value="1 ONS">1 ONS</option>
+                                <option value="1/2 ONS">1/2 ONS</option>
 
-						</div>
+                                <option value="1 GRAM">1 GRAM</option>
+                                <option value="1/2 GRAM">1/2 GRAM</option>
 
-						<div class="form-group">
+                                <option value="PAK">Pak</option>
+                                <option value="/2 Pak">/2 Pak</option>
 
-							<b><label>HARGA UMUM <span class="text-danger">*</span></label></b>
+                                <option value="1 Roll">1 Roll</option>
+                                <option value="1/2 Roll">1/2 Roll</option>
 
-							<input type="number" name="hargaumum" id="hargaumum" class="form-control" placeholder="Masukan harga umum" required>
+                                <option value="1 Gross">1 Gross</option>
+                                <option value="1/2 Gross">1/2 Gross</option>
 
-						</div>
+                                <option value="BOX">BOX</option>
 
-						<div class="form-group">
+                                <option value="1/2 DUS">1/2 DUS</option>
 
-							<b><label>HARGA GROSIR <span class="text-danger">*</span></label></b>
+                                <option value="Bal">Bal</option>
+                                <option value="1/2 Bal">1/2 Bal</option>
 
-							<input type="number" name="hargagrosir" id="hargagrosir" class="form-control" placeholder="Masukan harga grosir" required>
+                                <option value="KARUNG">KARUNG</option>
+                                <option value="1/2 KARUNG">1/2 KARUNG</option>
 
-						</div>
+                                <option value="Boss">Boss</option>
+                                <option value="1/2 Boss">1/2 Boss</option>
 
-						<div class="form-group">
+                                <option value="1 PETI">1 PETI</option>
+                                <option value="1/2 PETI">1/2 PETI</option>
 
-							<label>Isi Perdus <span class="text-danger">*</span></label>
+                                <option value="GULUNG">GULUNG</option>
+                                <option value="TIMBANGAN">TIMBANGAN</option>
+                            </select>
 
-							<input type="text" name="idsatuan" id="idsatuan" class="form-control" placeholder="Masukan idsatuan" value="1" required>
+                        </div>
+                        <div class="form-group">
 
-						</div>
+                            <b><label>HARGA MODAL <span class="text-danger">*</span></label></b>
 
+                            <input type="number" name="harga_modal" id="harga_modal" class="form-control" placeholder="Masukan harga modal barang" value="0" required>
 
-						<div class="form-group">
+                        </div>
+                        <div class="form-group">
 
-							<label>Abaikan <span class="text-danger">*</span></label>
+                            <b><label>HARGA UMUM <span class="text-danger">*</span></label></b>
 
-							<input readonly type="text" name="id" id="id" class="form-control" placeholder="Masukan id" value="2" required>
+                            <input type="number" name="hargaumum" id="hargaumum" value="0" class="form-control" placeholder="Masukan harga umum" required>
 
-						</div>
+                        </div>
 
-						<div class="form-group">
+                        <div class="form-group">
 
-							<label>Stok <span class="text-danger">*</span></label>
+                            <b><label>HARGA GROSIR <span class="text-danger">*</span></label></b>
 
-							<input type="text" name="qty" id="qty" class="form-control" placeholder="Masukan qty" value="9999" required>
+                            <input type="number" name="hargagrosir" id="hargagrosir" value="0" class="form-control" placeholder="Masukan harga grosir" required>
 
-						</div>
+                        </div>
 
-						<div class="form-group">
 
-							<button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Tambah Barang</button>
-							<button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
 
-						</div>
 
-					</form>
+                        <div class="form-group">
 
-				</div>
+                            <label>Abaikan <span class="text-danger">*</span></label>
 
-			</div>
+                            <input readonly type="text" name="id" id="id" class="form-control" placeholder="Masukan id" value="2" required>
 
-		</div>
+                        </div>
 
-	</div>
 
 
+                        <div class="form-group">
 
-	<div class="container my-4">
+                            <button type="submit" name="submit" value="submit" id="submit" class="btn btn-primary"><i class="fa fa-fw fa-plus-circle"></i> Tambah Barang</button>
+                            <button type="button" class="btn btn-warning" onclick="window.close();">Kembali</button>
 
+                        </div>
 
+                    </form>
 
-	</div>
+                </div>
 
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+            </div>
 
-	<style>
-		.footer {
-			position: fixed;
-			left: 0;
-			bottom: 0;
-			width: 100%;
-			background-color: Black;
-			color: white;
-			text-align: center;
-		}
-	</style>
-	<script>
-		document.getElementById('myForm').addEventListener('submit', function(event) {
-			event.preventDefault(); // prevent form from being submitted
+        </div>
 
-			// get value of input with ID "name"
-			var USERNAME = document.getElementById('USERNAME').value;
+    </div>
 
-			// set action of form to "google.com/name"
-			this.action = "../barang/?barang=" + USERNAME;
 
-			// submit form
-			this.submit();
-		});
-	</script>
+
+    <div class="container my-4">
+
+
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+    <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: Black;
+            color: white;
+            text-align: center;
+        }
+    </style>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // prevent form from being submitted
+
+            // get value of input with ID "name"
+            var USERNAME = document.getElementById('USERNAME').value;
+
+            // set action of form to "google.com/name"
+            this.action = "../barang/?barang=" + USERNAME;
+
+            // submit form
+            this.submit();
+        });
+    </script>
 
 </body>
 

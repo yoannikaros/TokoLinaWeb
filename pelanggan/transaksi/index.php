@@ -85,7 +85,9 @@
 
                 echo "</table>";
             } else {
-                echo "0 results";
+                echo "sepertinya data anda telah diubah <br>";
+                echo " <a target='_blank' href='../../laporan/transaksi2.php' class='btn btn-warning'>Periksa laporan zaman dulu</a><br>
+                ";
             }
             $conn->close();
             ?>

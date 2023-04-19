@@ -12,8 +12,10 @@
     <link rel="stylesheet" href="../source/css/bootstrap-grid.css" />
     <link rel="stylesheet" href="../source/fontawesome/css/font-awesome.min.css" />
     <link rel="stylesheet" href="../source/fontawesome/css/all.css" />
-    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="../source/v4/dist/css/bootstrap.min.css"
+        integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <!-- Menyisipkan JQuery dan Javascript  -->
     <script src="../source/js/bootstrap.min.js"></script>
     <script rel="stylesheet" src="../source/fontawesome/js/all.min.js"></script>
@@ -60,8 +62,9 @@
                         Kunjungan</button></a>
                 <a href="../transaksi/data_struk.php"><button class='btn btn-warning mb-3 mr-2'>Jumlah Barang
                         keluar</button></a>
-                <a href="../transaksi/data_barang.php"><button class='btn btn-warning mb-3 mr-2'>Data Barang
-                        keluar</button></a>
+
+                <a href="../laporan/keuntungan.php"><button class='btn btn-warning mb-3 mr-2'>Keuntungan</button></a>
+                <a href="../laporan/stok.php"><button class='btn btn-warning mb-3 mr-2'>Stok</button></a>
             </div>
             <p>Menjumlahkan subtotal berdasarkan tanggal</p>
             <table class='table'>
@@ -89,13 +92,15 @@
                         $jumlah_baris++;
                     ?>
 
-                        <tr>
-                            <td data-label="Tanggal"><?php echo $data['date']; ?></td>
-                            <td data-label="Total Subtotal"><?php echo buatRupiah($data['total_subtotal']); ?></td>
-                            <td> <a target='_blank' href='../transaksi-konsumen/barang.php?tanggal=<?php echo $data['date']; ?>' class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
-                            </td>
+                    <tr>
+                        <td data-label="Tanggal"><?php echo $data['date']; ?></td>
+                        <td data-label="Total Subtotal"><?php echo buatRupiah($data['total_subtotal']); ?></td>
+                        <td> <a target='_blank'
+                                href='../transaksi-konsumen/barang.php?tanggal=<?php echo $data['date']; ?>'
+                                class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
+                        </td>
 
-                        </tr>
+                    </tr>
                     <?php
                         $rata_rata = $total_nilai / $jumlah_baris;
                     } ?>

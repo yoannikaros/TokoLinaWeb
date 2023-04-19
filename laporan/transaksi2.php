@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Laporan Darurat</title>
     <!-- Menyisipkan CSS -->
     <link rel="stylesheet" href="../source/css/bootstrap.min.css" />
     <link rel="stylesheet" href="../source/css/bootstrap.css" />
@@ -29,11 +29,8 @@
     $connection = mysqli_connect("localhost", "root", "", "akrab_main");
 
     // Query untuk mengambil data tanggal dan total subtotal dari data yang sama
-    $query = "SELECT nama_pelanggan, DATE_FORMAT(date,'%Y/%m/%d') as date, SUM(subtotal) as total_subtotal 
-    FROM sales 
-    GROUP BY nama_pelanggan, DATE_FORMAT(date,'%Y/%m/%d') 
-    ORDER BY date DESC
-    ";
+    $query = "SELECT nama_pelanggan, SUM(subtotal) as total_subtotal, SUM(bayar) as total_bayar, SUM(balance) as total_balance, SUM(hutang) as total_hutang, SUM(totalhutang) as total_totalhutang FROM sales GROUP BY nama_pelanggan";
+
 
     // Eksekusi query
     $result = mysqli_query($connection, $query);
@@ -50,25 +47,12 @@
     ?>
     <div class="container mt-3">
         <div class="card p-3">
-            <div class="btn-group mb-3" role="group">
 
-                <a href="../transaksi/waktu.php"><button class='btn btn-dark mb-3 mr-3'>Ringkas</button></a>
-                <a href="../transaksi/range.php"><button class='btn btn-dark mb-3 mr-2'>Rentang waktu</button></a>
-                <a href="../transaksi/data_pertransaksi.php"><button class='btn btn-warning mb-3 mr-2'>Data
-                        Kunjungan</button></a>
-                <a href="../transaksi/data_struk.php"><button class='btn btn-warning mb-3 mr-2'>Jumlah Barang
-                        keluar</button></a>
-                <a href="../transaksi/data_barang.php"><button class='btn btn-warning mb-3 mr-2'>Data Barang
-                        keluar</button></a>
-            </div>
-            <p>Menjumlahkan subtotal berdasarkan tanggal dan nama konsumen</p>
             <table class='table'>
 
                 <thead class='thead-dark'>
                     <tr>
                         <th>Nama</th>
-                        <th>Tanggal</th>
-                        <th>Total Subtotal</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -85,14 +69,12 @@
 
                         <tr>
                             <td data-label="nama_pengguna"><?php echo $data['nama_pelanggan']; ?></td>
-                            <td data-label="Tanggal"><?php echo $data['date']; ?></td>
-                            <td data-label="Total Subtotal"><?php echo buatRupiah($data['total_subtotal']); ?></td>
-                            <td> <a target='_blank' href='../transaksi-konsumen/barang.php?tanggal=<?php echo $data['date']; ?>&pelanggan=<?php echo $data['nama_pelanggan']; ?>' class='btn-sm btn btn-outline-info mr-2'>Detail Transaksi</a>
+                            <td> <a target='_blank' href='../transaksi-konsumen/barang.php?pelanggan=<?php echo $data['nama_pelanggan']; ?>' class='btn-sm btn btn-info mr-2'>Periksa</a>
                             </td>
 
                         </tr>
                     <?php } ?>
-                    <td data-label="Total Subtotal">Total : <?php echo buatRupiah($total_hutang); ?></td>
+
 
                 </tbody>
             </table>
